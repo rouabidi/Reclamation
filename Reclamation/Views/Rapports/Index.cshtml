@@ -32,12 +32,12 @@
                         <td>@rapport.TotalTicketsVendus</td>
                         <td>@rapport.RevenusTotaux.ToString("C")</td>
                         <td>@rapport.Responsable</td>
-                        <td><img src="/Ticket/@rapport.ImageFileName" width="108" alt="Image du Ticket" /></td>
+                        <td><img src="/rapports/@rapport.ImageFileName" width="108" alt="Image du rapport" /></td>
                         <td style="white-space: nowrap">
                             <a class="btn btn-primary btn-sa" asp-controller="Rapports" asp-action="Edit"
                                 asp-route-id="@rapport.Id">Edit</a>
                             <a class="btn btn-danger btn-sm" asp-controller="Rapports" asp-action="Delete"
-                                 asp-route-id="@rapport.Id">Delete</a>
+                           asp-route-id="@rapport.Id" onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
 
                     </tr>
