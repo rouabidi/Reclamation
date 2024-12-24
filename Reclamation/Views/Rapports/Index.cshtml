@@ -1,0 +1,47 @@
+﻿@model List<Rapport>
+@{
+}
+<h2 class="text-center mb-5">Liste des Rapports</h2>
+
+<div class="row mb-5">
+    <div class="col">
+        <!-- Bouton pour ajouter un nouveau rapport -->
+        <a class="btn btn-primary" asp-controller="Rapports" asp-action="Create">Nouveau Rapport</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date du Rapport</th>
+                <th>Total Tickets Vendus</th>
+                <th>Revenus Totaux</th>
+                <th>Responsable</th>
+                <th>Nom du Fichier Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rapport in Model)
+            {
+                    <tr>
+                        <td>@rapport.Id</td>
+                        <td>@rapport.DateRapport.ToString("dd/MM/yyyy")</td>
+                        <td>@rapport.TotalTicketsVendus</td>
+                        <td>@rapport.RevenusTotaux.ToString("C")</td>
+                        <td>@rapport.Responsable</td>
+                        <td><img src="/Ticket/@rapport.ImageFileName" width="108" alt="Image du Ticket" /></td>
+                        <td style="white-space: nowrap">
+                            <a class="btn btn-primary btn-sa" asp-controller="Rapports" asp-action="Edit"
+                                asp-route-id="@rapport.Id">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Rapports" asp-action="Delete"
+                                 asp-route-id="@rapport.Id">Delete</a>
+                        </td>
+
+                    </tr>
+            }
+        </tbody>
+    </table>
+</div>
